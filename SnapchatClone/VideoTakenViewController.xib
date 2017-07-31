@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VideoTakenViewController" customModule="SnapchatClone" customModuleProvider="target">
+            <connections>
+                <outlet property="discardButton" destination="B5B-Z2-tJh" id="EeC-fg-hap"/>
+                <outlet property="previewLayer" destination="mYp-hh-b7t" id="7eW-gp-BMy"/>
+                <outlet property="slowMotionButton" destination="r3W-NV-gBF" id="Fog-Pf-EYs"/>
+                <outlet property="uploadButton" destination="3DR-Qv-GBT" id="sko-c0-TCs"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mYp-hh-b7t" userLabel="PreviewLayer">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3DR-Qv-GBT">
+                    <rect key="frame" x="284" y="576" width="71" height="71"/>
+                    <subviews>
+                        <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upload" translatesAutoresizingMaskIntoConstraints="NO" id="hOG-pz-7zB">
+                            <rect key="frame" x="8" y="8" width="55" height="55"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.058823529409999999" green="0.53725490200000003" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="hOG-pz-7zB" secondAttribute="trailing" constant="8" id="4qj-Zp-BQ3"/>
+                        <constraint firstItem="hOG-pz-7zB" firstAttribute="leading" secondItem="3DR-Qv-GBT" secondAttribute="leading" constant="8" id="5Lf-OV-TyZ"/>
+                        <constraint firstItem="hOG-pz-7zB" firstAttribute="top" secondItem="3DR-Qv-GBT" secondAttribute="top" constant="8" id="Tbf-tr-4em"/>
+                        <constraint firstAttribute="bottom" secondItem="hOG-pz-7zB" secondAttribute="bottom" constant="8" id="mAU-Cz-8Rc"/>
+                        <constraint firstAttribute="width" secondItem="3DR-Qv-GBT" secondAttribute="height" multiplier="1:1" id="n6z-N0-cWa"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B5B-Z2-tJh">
+                    <rect key="frame" x="20" y="576" width="71" height="71"/>
+                    <subviews>
+                        <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="picture-2" translatesAutoresizingMaskIntoConstraints="NO" id="eJl-Fu-4og">
+                            <rect key="frame" x="8" y="8" width="55" height="55"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.058823529409999999" green="0.53725490200000003" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="eJl-Fu-4og" secondAttribute="trailing" constant="8" id="2Ez-QL-GIq"/>
+                        <constraint firstAttribute="width" secondItem="B5B-Z2-tJh" secondAttribute="height" multiplier="1:1" id="BE5-4F-s0c"/>
+                        <constraint firstItem="eJl-Fu-4og" firstAttribute="leading" secondItem="B5B-Z2-tJh" secondAttribute="leading" constant="8" id="OYm-gn-MXJ"/>
+                        <constraint firstAttribute="bottom" secondItem="eJl-Fu-4og" secondAttribute="bottom" constant="8" id="hDX-hj-yCs"/>
+                        <constraint firstItem="eJl-Fu-4og" firstAttribute="top" secondItem="B5B-Z2-tJh" secondAttribute="top" constant="8" id="op3-md-7rV"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r3W-NV-gBF">
+                    <rect key="frame" x="152" y="576" width="71" height="71"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="speedometer" translatesAutoresizingMaskIntoConstraints="NO" id="JG2-Je-0eq">
+                            <rect key="frame" x="8" y="8" width="55" height="55"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.058823529409999999" green="0.53725490200000003" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="JG2-Je-0eq" firstAttribute="leading" secondItem="r3W-NV-gBF" secondAttribute="leading" constant="8" id="8sF-bq-C5A"/>
+                        <constraint firstAttribute="trailing" secondItem="JG2-Je-0eq" secondAttribute="trailing" constant="8" id="FkY-Ph-tko"/>
+                        <constraint firstAttribute="width" secondItem="r3W-NV-gBF" secondAttribute="height" multiplier="1:1" id="TEP-Lw-MXf"/>
+                        <constraint firstAttribute="bottom" secondItem="JG2-Je-0eq" secondAttribute="bottom" constant="8" id="c99-IZ-nTN"/>
+                        <constraint firstItem="JG2-Je-0eq" firstAttribute="top" secondItem="r3W-NV-gBF" secondAttribute="top" constant="8" id="t1g-oU-wH9"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="r3W-NV-gBF" secondAttribute="bottom" constant="20" id="3pe-d9-DIP"/>
+                <constraint firstItem="mYp-hh-b7t" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="4J6-7Y-46M"/>
+                <constraint firstAttribute="trailing" secondItem="B5B-Z2-tJh" secondAttribute="trailing" constant="284" id="4oL-dW-hCy"/>
+                <constraint firstItem="r3W-NV-gBF" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="9ax-dS-P6p"/>
+                <constraint firstItem="mYp-hh-b7t" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Brd-1i-gXk"/>
+                <constraint firstAttribute="bottom" secondItem="mYp-hh-b7t" secondAttribute="bottom" id="Gnq-9O-WRX"/>
+                <constraint firstAttribute="bottom" secondItem="B5B-Z2-tJh" secondAttribute="bottom" constant="20" id="L0t-py-6gT"/>
+                <constraint firstAttribute="trailing" secondItem="mYp-hh-b7t" secondAttribute="trailing" id="M2Z-SS-wcH"/>
+                <constraint firstItem="r3W-NV-gBF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="152" id="MuE-mx-lbg"/>
+                <constraint firstItem="3DR-Qv-GBT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="284" id="RBQ-Wt-iJr"/>
+                <constraint firstAttribute="bottom" secondItem="3DR-Qv-GBT" secondAttribute="bottom" constant="20" id="eiJ-SS-tux"/>
+                <constraint firstAttribute="trailing" secondItem="3DR-Qv-GBT" secondAttribute="trailing" constant="20" id="ira-ee-wnO"/>
+                <constraint firstAttribute="trailing" secondItem="r3W-NV-gBF" secondAttribute="trailing" constant="152" id="om0-PP-egJ"/>
+                <constraint firstItem="B5B-Z2-tJh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="tyg-qV-cT6"/>
+            </constraints>
+            <point key="canvasLocation" x="32.5" y="92.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="picture-2" width="64" height="64"/>
+        <image name="speedometer" width="64" height="64"/>
+        <image name="upload" width="64" height="64"/>
+    </resources>
+</document>

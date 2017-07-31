@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DecimalToBinary" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jhc-Mm-yhI">
+                                <rect key="frame" x="66" y="140" width="243" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WwU-Qf-Nck">
+                                <rect key="frame" x="147" y="203" width="80" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Get Binary"/>
+                                <connections>
+                                    <action selector="getBinary:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LjY-QV-2jo"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06I-Bh-uWa">
+                                <rect key="frame" x="86" y="306" width="202" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wid-uq-k89">
+                                <rect key="frame" x="67" y="354" width="240" height="288"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="wid-uq-k89" secondAttribute="height" multiplier="1:1.2" id="5lw-Wt-dLl"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kUE-RI-J3C">
+                                <rect key="frame" x="135" y="244" width="105" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Get Nonbinary"/>
+                                <connections>
+                                    <action selector="getNonbinary:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Sh4-Fs-Sfw"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="kUE-RI-J3C" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CPh-fI-Dpf"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="wid-uq-k89" secondAttribute="bottom" constant="25" id="DHn-i9-pZk"/>
+                            <constraint firstItem="kUE-RI-J3C" firstAttribute="top" secondItem="WwU-Qf-Nck" secondAttribute="bottom" constant="8" id="GqF-xw-5Tn"/>
+                            <constraint firstItem="Jhc-Mm-yhI" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="120" id="Iam-79-g2E"/>
+                            <constraint firstItem="06I-Bh-uWa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NBv-Hb-Bsb"/>
+                            <constraint firstItem="WwU-Qf-Nck" firstAttribute="top" secondItem="Jhc-Mm-yhI" secondAttribute="bottom" constant="33" id="PFn-k6-IH7"/>
+                            <constraint firstItem="06I-Bh-uWa" firstAttribute="top" secondItem="kUE-RI-J3C" secondAttribute="bottom" constant="30" id="Phq-PG-fLv"/>
+                            <constraint firstItem="WwU-Qf-Nck" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="V98-Fe-kQp"/>
+                            <constraint firstItem="wid-uq-k89" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="51" id="baT-f3-KNP"/>
+                            <constraint firstItem="Jhc-Mm-yhI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="gHO-Uv-QWu"/>
+                            <constraint firstItem="06I-Bh-uWa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="70" id="kX9-IL-LmQ"/>
+                            <constraint firstItem="wid-uq-k89" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pCi-zl-Cnu"/>
+                            <constraint firstItem="Jhc-Mm-yhI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="swu-qs-mdL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="binaryLabel" destination="06I-Bh-uWa" id="Wor-Ch-a9s"/>
+                        <outlet property="imageView" destination="wid-uq-k89" id="sZG-ES-111"/>
+                        <outlet property="numberTextField" destination="Jhc-Mm-yhI" id="XCU-uc-SvS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
