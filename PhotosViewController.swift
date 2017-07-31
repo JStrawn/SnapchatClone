@@ -46,6 +46,13 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource, UIColl
         collectionView.collectionViewLayout = layout
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //collectionView.reloadData()
+        PhotosViewController.media.removeAll()
+    }
+
+    
     class func getUserID() {
         userID = FIRAuth.auth()?.currentUser?.uid
   
@@ -157,17 +164,18 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource, UIColl
             let newTodo: [String: Any] = ["imageURL" : "\(downloadURL!)", "mediaType" : "photo"]
             
             databaseRef.child("users").child(PhotosViewController.userID).child("images").child(uuid).setValue(newTodo)
-            
-
-            
+    
         }
+        
+        //PhotosViewController.getPhotos()
+        
     }
     
     
     class func uploadVideo(videoFileLocation:URL) {
         
-        //name the video
-        //I know this says images but i don't feel like changing the folder name in firebase
+        // name the video
+        // I know this says images but i don't feel like changing the folder name in firebase
         let uuid = UUID().uuidString
         
         //get references
@@ -194,28 +202,25 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource, UIColl
             
         })
         
-        PhotosViewController.getPhotos()
+        //PhotosViewController.getPhotos()
         
     }
     
     
     class func getPhotos() {
         
-        self.media.removeAll()
-        
         //if user is logged in, grab their images
         let uid = FIRAuth.auth()?.currentUser?.uid
+        
+        if uid != nil {
+        self.media.removeAll()
         FIRDatabase.database().reference().child("users").child(uid!).child("images").observe(.value, andPreviousSiblingKeyWith: { (snapshot, error) in
             
             if let imagesDictionaries = snapshot.value as? [String : [String:Any]] {
                 
                 print(imagesDictionaries[imagesDictionaries.keys.first!] ?? "NOTHNG HERE")
                 
-                //let images = imagesDictionaries.keys
-                
                 for key in imagesDictionaries.values {
-                    //let stringPos = key["imageURL"]
-                    //let pos: Int = Int()
                     let downloadURL = key["imageURL"] as? String
                     let downloadMediaType = key["mediaType"] as? String
                     let downloadedMedia = UploadedMedia(url: downloadURL!, type: downloadMediaType!)
@@ -236,7 +241,6 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource, UIColl
                             }
                             
                             PhotosViewController.media.append(downloadedMedia)
-                            
                             PhotosViewController.sharedInstance.delegate?.didGetPhoto()
                             
                         }
@@ -248,6 +252,7 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource, UIColl
         }, withCancel: nil)
         
         
+    }
     }
     
     

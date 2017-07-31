@@ -138,8 +138,6 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVC
     
     func captureVideo(sender: UILongPressGestureRecognizer) {
         
-        //videoFileOutput = AVCaptureMovieFileOutput()
-        
         if sender.state == .began {
             self.captureImageCircle.image = #imageLiteral(resourceName: "circumference-2")
             let recordingDelegate:AVCaptureFileOutputRecordingDelegate = self
@@ -173,7 +171,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVC
             print(error.localizedDescription)
         }
         
-        print("capture did finish")
+        print("capture finished")
         print(captureOutput);
         print(outputFileURL);
         
@@ -200,7 +198,6 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate, AVC
 
 extension AVCaptureDevice {
     
-    /// http://stackoverflow.com/questions/21612191/set-a-custom-avframeraterange-for-an-avcapturesession#27566730
     func configureDesiredFrameRate(_ desiredFrameRate: Int) {
         
         var isFPSSupported = false
