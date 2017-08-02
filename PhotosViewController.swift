@@ -46,12 +46,9 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource, UIColl
         collectionView.collectionViewLayout = layout
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
-        //collectionView.reloadData()
         PhotosViewController.media.removeAll()
     }
-
     
     class func getUserID() {
         userID = FIRAuth.auth()?.currentUser?.uid
@@ -164,11 +161,12 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource, UIColl
             let newTodo: [String: Any] = ["imageURL" : "\(downloadURL!)", "mediaType" : "photo"]
             
             databaseRef.child("users").child(PhotosViewController.userID).child("images").child(uuid).setValue(newTodo)
-    
+            //PhotosViewController.sharedInstance.delegate?.didGetPhoto()
+            //self.getPhotos()
+
         }
         
         //PhotosViewController.getPhotos()
-        
     }
     
     
@@ -199,11 +197,13 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource, UIColl
             let newTodo: [String: Any] = ["imageURL" : "\(downloadURL!)", "mediaType" : "video"]
             
             databaseRef.child("users").child(PhotosViewController.userID!).child("images").child(uuid).setValue(newTodo)
-            
+            //PhotosViewController.sharedInstance.delegate?.didGetPhoto()
+            //self.getPhotos()
+
         })
         
         //PhotosViewController.getPhotos()
-        
+    
     }
     
     

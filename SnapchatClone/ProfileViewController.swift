@@ -31,8 +31,7 @@ class ProfileViewController: UIViewController {
         checkIfUserLoggedIn()
         
     }
-    
-    
+        
     func checkIfUserLoggedIn() {
         // if user is not logged in
         if FIRAuth.auth()?.currentUser?.uid == nil {
@@ -149,6 +148,8 @@ class ProfileViewController: UIViewController {
             self.usernameLabel.text = name
             self.emailLabel.text = email
             self.dismissKeyboard()
+            PhotosViewController.getPhotos()
+
         })
         
         
