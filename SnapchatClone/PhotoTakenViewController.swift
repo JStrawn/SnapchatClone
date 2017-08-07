@@ -35,8 +35,8 @@ class PhotoTakenViewController: UIViewController {
     }
     
     func uploadCurrentPhoto() {
-        PhotosViewController.postPhoto(myImage: photo)
         self.dismiss(animated: false, completion: nil)
+        PhotosViewController.postPhoto(myImage: photo)
     }
     
     func deleteCurrentPhoto() {

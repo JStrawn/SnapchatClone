@@ -16,11 +16,7 @@ class MediaCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-//        mediaTypeImageView = UIImageView(image: #imageLiteral(resourceName: "video-camera"))
-//        mediaTypeImageView.backgroundColor = UIColor.blue
-//        mediaTypeImageView.frame = CGRect(x: imageView.frame.maxX - mediaTypeImageView.frame.width, y: imageView.frame.maxY, width: imageView.frame.width/6, height: imageView.frame.width/6)
-//        imageView.addSubview(mediaTypeImageView)
+
     }
 
 }

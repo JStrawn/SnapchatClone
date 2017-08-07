@@ -33,12 +33,13 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         self.collectionView.register(UINib(nibName: "MediaCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cell")
         
+        // set delegates
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         PhotosViewController.sharedInstance.delegate = self
         
+        // collectionView layout
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -46,10 +47,6 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource, UIColl
         collectionView.collectionViewLayout = layout
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        PhotosViewController.media.removeAll()
-//        //PhotosViewController.getPhotos()
-//    }
     
     class func getUserID() {
         userID = FIRAuth.auth()?.currentUser?.uid
@@ -115,7 +112,6 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        //did select item
         let currentPhoto =  PhotosViewController.media[indexPath.row]
         
         if currentPhoto.type == "photo" {
@@ -256,8 +252,6 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource, UIColl
                             
                         }
                         
-                        //PhotosViewController.sharedInstance.delegate?.didGetPhoto()
-
                     }
                 }
             }
