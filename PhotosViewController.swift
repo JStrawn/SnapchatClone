@@ -46,9 +46,10 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource, UIColl
         collectionView.collectionViewLayout = layout
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        PhotosViewController.media.removeAll()
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        PhotosViewController.media.removeAll()
+//        //PhotosViewController.getPhotos()
+//    }
     
     class func getUserID() {
         userID = FIRAuth.auth()?.currentUser?.uid
@@ -161,12 +162,11 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource, UIColl
             let newTodo: [String: Any] = ["imageURL" : "\(downloadURL!)", "mediaType" : "photo"]
             
             databaseRef.child("users").child(PhotosViewController.userID).child("images").child(uuid).setValue(newTodo)
-            //PhotosViewController.sharedInstance.delegate?.didGetPhoto()
-            //self.getPhotos()
+            PhotosViewController.sharedInstance.delegate?.didGetPhoto()
+            PhotosViewController.getPhotos()
 
         }
         
-        //PhotosViewController.getPhotos()
     }
     
     
@@ -197,12 +197,11 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource, UIColl
             let newTodo: [String: Any] = ["imageURL" : "\(downloadURL!)", "mediaType" : "video"]
             
             databaseRef.child("users").child(PhotosViewController.userID!).child("images").child(uuid).setValue(newTodo)
-            //PhotosViewController.sharedInstance.delegate?.didGetPhoto()
-            //self.getPhotos()
+            PhotosViewController.sharedInstance.delegate?.didGetPhoto()
+            PhotosViewController.getPhotos()
 
         })
         
-        //PhotosViewController.getPhotos()
     
     }
     
@@ -213,12 +212,22 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource, UIColl
         let uid = FIRAuth.auth()?.currentUser?.uid
         
         if uid != nil {
-        self.media.removeAll()
-        FIRDatabase.database().reference().child("users").child(uid!).child("images").observe(.value, andPreviousSiblingKeyWith: { (snapshot, error) in
+        PhotosViewController.media.removeAll()
+            
+            FIRDatabase.database().reference().child("users").child(uid!).child("images").observeSingleEvent(of: .value, andPreviousSiblingKeyWith: { (snapshot, error) in
             
             if let imagesDictionaries = snapshot.value as? [String : [String:Any]] {
                 
                 print(imagesDictionaries[imagesDictionaries.keys.first!] ?? "NOTHNG HERE")
+                
+                var count = imagesDictionaries.count
+                
+                let accumulator = { () -> () in
+                    count = count - 1
+                    if( count == 0 ){
+                        PhotosViewController.sharedInstance.delegate?.didGetPhoto()
+                    }
+                }
                 
                 for key in imagesDictionaries.values {
                     let downloadURL = key["imageURL"] as? String
@@ -228,6 +237,8 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource, UIColl
                     
                     guard let url = URL(string: downloadedMedia.fileURL)
                         else { continue }
+                    
+                    
                     
                     DispatchQueue.global().async {
                         guard let data = try? Data(contentsOf: url)
@@ -241,10 +252,12 @@ class PhotosViewController: UIViewController, UICollectionViewDataSource, UIColl
                             }
                             
                             PhotosViewController.media.append(downloadedMedia)
-                            PhotosViewController.sharedInstance.delegate?.didGetPhoto()
+                            accumulator()
                             
                         }
                         
+                        //PhotosViewController.sharedInstance.delegate?.didGetPhoto()
+
                     }
                 }
             }

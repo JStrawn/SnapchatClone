@@ -19,14 +19,11 @@ class ViewController: UIViewController {
         
         PhotosViewController.getUserID()
         
-        PhotosViewController.getPhotos()
-        
         createScrollView()
         
+        PhotosViewController.getPhotos()
         
     }
-    
-    
     
     
     func createScrollView() {

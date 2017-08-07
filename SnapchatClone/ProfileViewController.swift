@@ -132,6 +132,7 @@ class ProfileViewController: UIViewController {
             }
             
             print("Saved user succsessfully into Firebase Database")
+            PhotosViewController.getUserID()
             
             // now that user is logged in, show their login info and hid all the other stuff
             self.loginRegisterSegmentedControl.isHidden = true
@@ -148,7 +149,6 @@ class ProfileViewController: UIViewController {
             self.usernameLabel.text = name
             self.emailLabel.text = email
             self.dismissKeyboard()
-            PhotosViewController.getPhotos()
 
         })
         
@@ -164,6 +164,9 @@ class ProfileViewController: UIViewController {
         
         do {
             try FIRAuth.auth()?.signOut()
+            PhotosViewController.media.removeAll()
+            PhotosViewController.sharedInstance.delegate?.didGetPhoto()
+
         } catch let logoutError {
             print(logoutError)
         }
